@@ -29,4 +29,9 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+
+    // Notes-first UX: route to quick note
+    Route::get('/notes/new', function () {
+        return view('notes.new');
+    })->name('notes.new');
 });
