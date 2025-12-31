@@ -13,11 +13,13 @@ class Editor extends Component
     public $type = 'post';
     public $preview;
     public $lastAutosaveAt;
+    public $publish_at;
 
     protected $rules = [
         'title' => 'nullable|string|max:255',
         'content' => 'required|string',
         'type' => 'required|string',
+        'publish_at' => 'nullable|date',
     ];
 
     public function mount()
@@ -48,13 +50,22 @@ class Editor extends Component
     {
         $this->validate();
 
+        $status = 'draft';
+        if ($this->publish_at) {
+            $publishAt = \Illuminate\Support\Carbon::parse($this->publish_at);
+            if ($publishAt->lte(now())) {
+                $status = 'published';
+            }
+        }
+
         $content = Content::create([
             'user_id' => auth()->id(),
             'type' => $this->type,
             'title' => $this->title,
             'body' => $this->content,
-            'status' => 'draft',
+            'status' => $status,
             'visibility' => 'public',
+            'publish_at' => $this->publish_at,
         ]);
 
         $this->dispatch('saved', $content->id);

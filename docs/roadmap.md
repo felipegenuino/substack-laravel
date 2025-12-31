@@ -36,7 +36,7 @@ Goal: Make writing enjoyable.
 
 - [x] Better markdown editor (preview, shortcuts)
 - [x] Autosave drafts
-- [ ] Content scheduling
+- [x] Content scheduling
 - [ ] Notes-first UX (lighter layout)
 - [ ] Keyboard-first navigation
 
