@@ -7,3 +7,4 @@
 - Criada migration `contents`, model `Content` e `ContentFactory`.
 - Adicionados testes Pest/Livewire: render, preview, save, autosave.
 - Atualizado `docs/roadmap.md` marcando "Better markdown editor" e "Autosave drafts" como concluídos.
+
