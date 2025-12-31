@@ -14,5 +14,8 @@
         <div class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
             <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
         </div>
+        <div class="mt-4">
+            <a href="{{ route('notes.new') }}" class="inline-flex items-center gap-2 px-3 py-2 bg-indigo-600 text-white rounded">Nova Note</a>
+        </div>
     </div>
 </x-layouts.app>
