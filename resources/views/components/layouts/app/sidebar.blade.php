@@ -127,6 +127,19 @@
         </flux:header>
 
         {{ $slot }}
+        {{ \Livewire::mount('command-palette')->html() }}
+
+        <script>
+            (function(){
+                window.addEventListener('keydown', function(e){
+                    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                        e.preventDefault();
+                        if (window.livewire && window.livewire.emit) window.livewire.emit('toggleCommandPalette');
+                        if (window.Livewire && window.Livewire.emit) window.Livewire.emit('toggleCommandPalette');
+                    }
+                });
+            })();
+        </script>
 
         @fluxScripts
     </body>
