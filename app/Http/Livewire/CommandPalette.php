@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Redirect;
 
 class CommandPalette extends Component
 {
@@ -15,7 +14,10 @@ class CommandPalette extends Component
     ];
 
     protected $commands = [
+        ['key' => 'new_post', 'label' => 'New Post', 'href' => '/posts/new'],
         ['key' => 'new_note', 'label' => 'New Note', 'href' => '/notes/new'],
+        ['key' => 'quick_note', 'label' => 'Quick Note', 'href' => '/notes/new?quick=1'],
+        ['key' => 'search', 'label' => 'Search', 'href' => '/search'],
         ['key' => 'dashboard', 'label' => 'Dashboard', 'href' => '/dashboard'],
     ];
 

@@ -127,7 +127,7 @@
         </flux:header>
 
         {{ $slot }}
-        {{ \Livewire::mount('command-palette')->html() }}
+        @livewire('command-palette')
 
         <script>
             (function(){
