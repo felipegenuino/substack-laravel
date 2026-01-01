@@ -26,4 +26,17 @@ class CommandPaletteTest extends TestCase
         // run should redirect to /dashboard
         $test->assertRedirect('/dashboard');
     }
+
+    public function test_keyboard_navigation_simulation()
+    {
+        Livewire::test('command-palette')
+            ->call('open')
+            ->assertSet('open', true)
+            ->set('query', 'dash')
+            ->assertSee('Dashboard')
+            ->set('query', 'note')
+            ->assertSee('New Note')
+            ->call('run', 'new_note')
+            ->assertRedirect('/notes/new');
+    }
 }

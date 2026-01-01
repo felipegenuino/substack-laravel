@@ -7,7 +7,10 @@
             <div class="absolute inset-0 bg-black/40" wire:click="close"></div>
 
             <div class="relative w-full max-w-xl bg-white rounded shadow-lg p-4">
-                <input wire:model.debounce.300ms="query" autofocus class="w-full border rounded p-2" placeholder="Type a command..." />
+                    <div class="relative">
+                        <input wire:model.debounce.300ms="query" autofocus class="w-full border rounded p-2 pr-20" placeholder="Type a command..." />
+                        <span class="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-gray-500">Ctrl/Cmd+K</span>
+                    </div>
 
                 <ul class="mt-3 space-y-2">
                     @foreach($this->filteredCommands as $cmd)
