@@ -15,7 +15,12 @@
                 <ul class="mt-3 space-y-2">
                     @foreach($this->filteredCommands as $cmd)
                     <li :class="selected === {{ $loop->index }} ? 'bg-gray-100' : ''" class="rounded">
-                        <button wire:click="run('{{ $cmd['key'] }}')" data-key="{{ $cmd['key'] }}" class="w-full text-left px-3 py-2 rounded">{{ $cmd['label'] }}</button>
+                        <button wire:click="run('{{ $cmd['key'] }}')" data-key="{{ $cmd['key'] }}" class="w-full text-left px-3 py-2 rounded flex items-center justify-between">
+                            <span>{{ $cmd['label'] }}</span>
+                            @if(! empty($cmd['hint']))
+                                <span class="text-xs text-gray-500">{{ $cmd['hint'] }}</span>
+                            @endif
+                        </button>
                     </li>
                     @endforeach
                 </ul>

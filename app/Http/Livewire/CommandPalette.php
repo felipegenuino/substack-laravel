@@ -14,11 +14,11 @@ class CommandPalette extends Component
     ];
 
     protected $commands = [
-        ['key' => 'new_post', 'label' => 'New Post', 'href' => '/posts/new'],
-        ['key' => 'new_note', 'label' => 'New Note', 'href' => '/notes/new'],
-        ['key' => 'quick_note', 'label' => 'Quick Note', 'href' => '/notes/new?quick=1'],
-        ['key' => 'search', 'label' => 'Search', 'href' => '/search'],
-        ['key' => 'dashboard', 'label' => 'Dashboard', 'href' => '/dashboard'],
+        ['key' => 'new_post', 'label' => 'New Post', 'href' => '/posts/new', 'hint' => 'N'],
+        ['key' => 'new_note', 'label' => 'New Note', 'href' => '/notes/new', 'hint' => '⌘N'],
+        ['key' => 'quick_note', 'label' => 'Quick Note', 'href' => '/notes/new?quick=1', 'hint' => 'Q'],
+        ['key' => 'search', 'label' => 'Search', 'href' => '/search', 'hint' => '/'],
+        ['key' => 'dashboard', 'label' => 'Dashboard', 'href' => '/dashboard', 'hint' => 'D'],
     ];
 
     public function toggle()
