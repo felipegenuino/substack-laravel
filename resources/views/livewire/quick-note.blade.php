@@ -9,6 +9,6 @@
     </div>
 
     <div class="flex gap-2">
-        <button wire:click.prevent="save" class="px-3 py-2 bg-blue-600 text-white rounded">Salvar Nota</button>
+        <button wire:click.prevent="saveNote" class="px-3 py-2 bg-blue-600 text-white rounded">Salvar Nota</button>
     </div>
 </div>

@@ -11,7 +11,7 @@ it('creates a quick note without title', function () {
 
     Livewire::test(QuickNote::class)
         ->set('body', 'Nota rápida sem título')
-        ->call('save')
+        ->call('saveNote')
         ->assertHasNoErrors();
 
     $this->assertDatabaseHas('contents', [
@@ -29,7 +29,7 @@ it('creates a quick note with title', function () {
     Livewire::test(QuickNote::class)
         ->set('title', 'Minha nota')
         ->set('body', 'Conteúdo da nota')
-        ->call('save')
+        ->call('saveNote')
         ->assertHasNoErrors();
 
     $this->assertDatabaseHas('contents', [

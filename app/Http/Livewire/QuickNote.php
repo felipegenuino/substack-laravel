@@ -15,7 +15,7 @@ class QuickNote extends Component
         'title' => 'nullable|string|max:255',
     ];
 
-    public function save()
+    protected function doSave()
     {
         $this->validate();
 
@@ -33,6 +33,16 @@ class QuickNote extends Component
         $this->dispatch('noteSaved', $content->id);
 
         return $content;
+    }
+
+    public function save()
+    {
+        return $this->doSave();
+    }
+
+    public function saveNote()
+    {
+        return $this->doSave();
     }
 
     public function render()
