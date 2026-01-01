@@ -1,0 +1,57 @@
+<div x-data="{ open: @entangle('open'), query: @entangle('query'), selected: 0 }"
+     x-init="$watch('open', value => { if (value) { selected = 0; $nextTick(() => { const input = $el.querySelector('input'); if (input) input.focus(); }); } })"
+     x-on:keydown.window="if (!open) return; if ($event.key === 'ArrowDown') { const count = $el.querySelectorAll('ul li').length; selected = Math.min(selected + 1, count - 1); $event.preventDefault(); } else if ($event.key === 'ArrowUp') { selected = Math.max(selected - 1, 0); $event.preventDefault(); } else if ($event.key === 'Enter') { const btn = $el.querySelectorAll('ul li button')[selected]; if (btn) btn.click(); }">
+
+    <template x-if="open">
+        <div class="fixed inset-0 z-50 flex items-start justify-center p-4">
+            <div class="absolute inset-0 bg-black/40" wire:click="close"></div>
+
+            <div class="relative w-full max-w-xl bg-white rounded shadow-lg p-4">
+                    <div class="relative">
+                        <input wire:model.debounce.300ms="query" autofocus class="w-full border rounded p-2 pr-20" placeholder="Type a command..." />
+                        <span class="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-gray-500">Ctrl/Cmd+K</span>
+                    </div>
+
+                <ul class="mt-3 space-y-2">
+                    @foreach($this->filteredCommands as $cmd)
+                    <li :class="selected === {{ $loop->index }} ? 'bg-gray-100' : ''" class="rounded">
+                        <button wire:click="run('{{ $cmd['key'] }}')" data-key="{{ $cmd['key'] }}" class="w-full text-left px-3 py-2 rounded flex items-center justify-between">
+                            <div class="flex items-center">
+                                {{-- Icon mapping --}}
+                                @if(! empty($cmd['icon']) )
+                                    @switch($cmd['icon'])
+                                        @case('book-open-text')
+                                            <flux:icon.book-open-text class="me-3 size-4" />
+                                            @break
+                                        @case('chevrons-up-down')
+                                            <flux:icon.chevrons-up-down class="me-3 size-4" />
+                                            @break
+                                        @case('layout-grid')
+                                            <flux:icon.layout-grid class="me-3 size-4" />
+                                            @break
+                                        @case('magnifying-glass-plus')
+                                            <flux:icon.magnifying-glass-plus class="me-3 size-4" />
+                                            @break
+                                        @case('rocket-launch')
+                                            <flux:icon.rocket-launch class="me-3 size-4" />
+                                            @break
+                                        @default
+                                            {{-- fallback: no icon --}}
+                                    @endswitch
+                                @endif
+
+                                <span>{{ $cmd['label'] }}</span>
+                            </div>
+
+                            @if(! empty($cmd['hint']))
+                                <span class="text-xs text-gray-500">{{ $cmd['hint'] }}</span>
+                            @endif
+                        </button>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </template>
+
+</div>
