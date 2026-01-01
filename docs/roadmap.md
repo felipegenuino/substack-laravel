@@ -30,7 +30,7 @@ Non-goals:
 
 ---
 
-## Phase 1 — Writing Experience
+## Phase 1 — Writing Experience ✅
 
 Goal: Make writing enjoyable.
 
@@ -38,7 +38,7 @@ Goal: Make writing enjoyable.
 - [x] Autosave drafts
 - [x] Content scheduling
 - [x] Notes‑first UX (lighter layout)
-- [ ] Keyboard-first navigation
+- [x] Keyboard-first navigation
 
 ---
 
@@ -49,8 +49,8 @@ Goal: Improve consumption and discovery.
 - [ ] Archive by month/year
 - [ ] Category and tag pages
 - [ ] Better typography presets
-- [ ] Reading time estimation
-- [ ] Dark mode
+- [x] Reading time estimation
+- [x] Dark mode
 
 ---
 

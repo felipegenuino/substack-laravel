@@ -34,4 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/notes/new', function () {
         return view('notes.new');
     })->name('notes.new');
+
+    // Content CRUD routes
+    Volt::route('content/{content}/edit', 'content.edit')->name('content.edit');
 });

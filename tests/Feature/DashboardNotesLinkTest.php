@@ -8,5 +8,5 @@ it('shows a link to create a new note on the dashboard', function () {
 
     $this->get(route('dashboard'))
         ->assertStatus(200)
-        ->assertSee('Nova Note');
+        ->assertSee('Nova Nota');
 });

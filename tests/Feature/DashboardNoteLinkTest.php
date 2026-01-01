@@ -8,6 +8,6 @@ it('dashboard shows link to create a new note for authenticated users', function
 
     $response = $this->get(route('dashboard'));
     $response->assertStatus(200);
-    $response->assertSee('Nova Note');
+    $response->assertSee('Nova Nota');
     $response->assertSee(route('notes.new'));
 });
