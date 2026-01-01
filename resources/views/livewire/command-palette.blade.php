@@ -16,7 +16,33 @@
                     @foreach($this->filteredCommands as $cmd)
                     <li :class="selected === {{ $loop->index }} ? 'bg-gray-100' : ''" class="rounded">
                         <button wire:click="run('{{ $cmd['key'] }}')" data-key="{{ $cmd['key'] }}" class="w-full text-left px-3 py-2 rounded flex items-center justify-between">
-                            <span>{{ $cmd['label'] }}</span>
+                            <div class="flex items-center">
+                                {{-- Icon mapping --}}
+                                @if(! empty($cmd['icon']) )
+                                    @switch($cmd['icon'])
+                                        @case('book-open-text')
+                                            <flux:icon.book-open-text class="me-3 size-4" />
+                                            @break
+                                        @case('chevrons-up-down')
+                                            <flux:icon.chevrons-up-down class="me-3 size-4" />
+                                            @break
+                                        @case('layout-grid')
+                                            <flux:icon.layout-grid class="me-3 size-4" />
+                                            @break
+                                        @case('magnifying-glass-plus')
+                                            <flux:icon.magnifying-glass-plus class="me-3 size-4" />
+                                            @break
+                                        @case('rocket-launch')
+                                            <flux:icon.rocket-launch class="me-3 size-4" />
+                                            @break
+                                        @default
+                                            {{-- fallback: no icon --}}
+                                    @endswitch
+                                @endif
+
+                                <span>{{ $cmd['label'] }}</span>
+                            </div>
+
                             @if(! empty($cmd['hint']))
                                 <span class="text-xs text-gray-500">{{ $cmd['hint'] }}</span>
                             @endif
